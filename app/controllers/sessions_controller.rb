@@ -9,8 +9,16 @@ end
 
 post '/sessions' do
   @user = User.find_by(username: params[:username])
-  #authentication method
-  #if authentication passes login user
-  login(@user)
-  #else redirect to erb
+  if @user.authenticate(params[:password])
+    login(@user)
+    redirect "/sessions/#{@user.id}"
+  else
+    erb :'/sessions/new'
+  end
 end
+
+delete '/sessions' do
+  logout
+  redirect '/'
+end
+
