@@ -7,7 +7,7 @@ def logged_in?
 end
 
 def current_user
-  User.find_by(id: session.id)
+  User.find_by(id: session[:id])
 end
 
 def logout

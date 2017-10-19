@@ -1,7 +1,10 @@
 <h1>Welcome to Sinatra Overflow</h1>
 
-
-
 <a href='/users/new'>registration</a><br><br>
 <a href='/sessions/new'>login</a><br><br>
-<a href=''>logout</a>
+
+<form action="/sessions" method="POST">
+<input type="hidden" name="_method" value="DELETE">
+<input type="submit" value="Logout">
+</form>
+
