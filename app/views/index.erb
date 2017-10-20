@@ -8,3 +8,15 @@
 <input type="submit" value="Logout">
 </form>
 
+<div class='post-container'>
+  <% @posts.each do |post| %>
+    <strong><p><%= post.title %></p></strong>
+    <p><%= post.content  %></p>
+    <p><%= post.user.username  %></p>
+    <form action="/votes" method="POST">
+      <input type="hidden" name="_method" value="PUT">
+      <input type="submit" value="upvote">
+    </form>
+  <% end %>
+</div>
+
