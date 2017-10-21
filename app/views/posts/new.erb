@@ -1,0 +1,8 @@
+<h1>Create a New Post</h1>
+
+<form action='/posts' method='POST'>
+  <input type="text" name="post[title]" placeholder='Post Title'>
+  <input type="text" name="post[content]" placeholder='Text'>
+  <input type="hidden" name="post[user_id]" value='<%= current_user.id %>'>
+  <input type="submit" value="submit">
+</form>

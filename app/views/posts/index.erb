@@ -1,0 +1,39 @@
+
+
+
+<h1>Welcome to Stack Overflow</h1>
+<h2>Brought to you by "The Posse"</h2>
+
+<div class='post-container'>
+  <% @posts.each do |post| %>
+    <strong><p><%= post.title %></p></strong>
+    <p><%= post.content  %></p>
+    <p><%= post.user.username  %></p>
+       <% if logged_in? %>
+      <form action="/votes" method="POST">
+        <input type="hidden" name="vote[up_vote]" value=1>
+        <input type="hidden" name="vote[down_vote]" value=0>
+        <input type="hidden" name="vote[user_id]" value=" <%= current_user.id %>" >
+        <input type="hidden" name="vote[voteable_type]" value="Post" >
+        <input type="hidden" name="vote[voteable_id]" value="<%= post.id %>" >
+        <input type="submit" value="upvote">
+      </form>
+      <% end %>
+    <p>Total Upvotes: <%= total_upvotes(post) %></p>
+
+    <% if current_user.id == post.user_id %>
+      <p>
+        <form action="/posts" method="POST">
+          <input type="hidden" name="_method" value="delete">
+          <input type="hidden" name="post_id" value="<%= post.id %>">
+          <input type="submit" value="Delete Post">
+        </form>
+      </p>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <a href="/posts/new">Create Post</a>
+</div>
+
