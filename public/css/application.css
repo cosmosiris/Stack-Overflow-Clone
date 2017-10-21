@@ -1,0 +1,24 @@
+body {
+  background-color: #F9E79F;
+}
+
+h1, h2 {
+  color: #212F3D;
+  text-align: center;
+}
+
+.post-container {
+  border: 2px solid black;
+  padding-left: 30px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+}
+

@@ -7,7 +7,7 @@ post '/users' do
   @confirmed = params[:user][:password] == params[:password_confirmation]
   if @confirmed && @user.save
     login(@user)
-    redirect "/sessions/#{session.id}"
+    redirect "/sessions/#{@user.id}"
   else
     @errors = @user.errors.full_messages
     @errors << "you shall not pass" unless @confirmed

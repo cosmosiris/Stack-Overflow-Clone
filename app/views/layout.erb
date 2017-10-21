@@ -18,7 +18,19 @@
   <title></title>
 </head>
 <body>
-<a href="/"><h4>Home</h4></a>
+
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href='/users/new'>Registration</a></li>
+  <li><a href='/sessions/id'>login</a></li>
+
+  <% if logged_in? %>
+    <li><form action="/sessions" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Logout">
+    </form></li>
+  <% end %>
+</ul>
   <%= yield %>
 </body>
 </html>
